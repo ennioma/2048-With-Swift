@@ -46,11 +46,6 @@ class Changeset : NSObject {
         return found
     }
     
-    func reverse() -> Changeset {
-        changes = changes.reverse()
-        return self
-    }
-    
     init() {
         changes = Change[]()
     }

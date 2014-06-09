@@ -25,8 +25,8 @@ class BoardView: BaseView {
         didSet {
             if let notNilMatrix = matrix {
                 boardSize = notNilMatrix.size
-                
                 tiles = Tile[]()
+                originalTileFrames = CGRect[]()
                 
                 for idx in 0..boardSize*boardSize {
                     tiles.insert(nil, atIndex: idx)
@@ -69,10 +69,18 @@ class BoardView: BaseView {
             y += tileSize + padding
         }
     }
+    
+    func updateTiles() {
+        for a in 0..boardSize {
+            for b in 0..boardSize {
+                let value = matrix!.tiles[a*boardSize + b]
+                var tile = tiles[a*boardSize + b]
+                tile!.tileValue = value
+            }
+        }
+    }
 
     func update(changeset: Changeset) {
-        let e = matrix!
-
         println("changeset: \(changeset)")
         
         //Perform the animations, and then update the model behind
@@ -89,13 +97,7 @@ class BoardView: BaseView {
                 }
             }
         }, completion: { (_: Bool) in
-            for a in 0..self.boardSize {
-                for b in 0..self.boardSize {
-                    let value = e.tiles[a*self.boardSize + b]
-                    var tile = self.tiles[a*self.boardSize + b]
-                    tile!.tileValue = value
-                }
-            }
+            self.updateTiles()
             
             for change: Change in changeset.changes {
                 switch change.type {

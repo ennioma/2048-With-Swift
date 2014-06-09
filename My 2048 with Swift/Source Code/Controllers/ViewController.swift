@@ -6,20 +6,12 @@
 //  Copyright (c) 2014 enniomasi. All rights reserved.
 //
 
-/*
- *
- */
-
 import UIKit
 
 class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
-
-    // Top menu
     @IBOutlet var bestScoreView : ScoreView
     @IBOutlet var currentScoreView : ScoreView
-    
     @IBOutlet var boardView : BoardView
-    
     var engine: GameEngine?
 
     override func viewDidLoad() {
@@ -82,29 +74,25 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
     }
     
     func goToTop() {
-        let e = engine!
-        if !e.manageCommand(Direction.Up) {
+        if !engine!.manageCommand(Direction.Up) {
             gameOver()
         }
     }
     
     func goToRight() {
-        let e = engine!
-        if !e.manageCommand(Direction.Right) {
+        if !engine!.manageCommand(Direction.Right) {
             gameOver()
         }
     }
     
     func goToBottom() {
-        let e = engine!
-        if !e.manageCommand(Direction.Down) {
+        if !engine!.manageCommand(Direction.Down) {
             gameOver()
         }
     }
     
     func goToLeft() {
-        let e = engine!
-        if !e.manageCommand(Direction.Left) {
+        if !engine!.manageCommand(Direction.Left) {
             gameOver()
         }
     }

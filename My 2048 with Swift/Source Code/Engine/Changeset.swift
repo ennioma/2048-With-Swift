@@ -22,6 +22,23 @@ class Changeset : NSObject {
         return self
     }
     
+    func removeChange(change: Change) -> Changeset {
+        var found = -1
+        for idx in 0..countElements(changes) {
+            let element = changes[idx]
+            if change.equals(element) {
+                found = idx
+                break
+            }
+        }
+        
+        if found != -1 {
+            changes.removeAtIndex(found)
+        }
+        
+        return self
+    }
+    
     func reverse() -> Changeset {
         changes = changes.reverse()
         return self
@@ -55,6 +72,10 @@ class Change {
         beforeChange = oldValue
         afterChange = newValue
         type = changeType
+    }
+    
+    func equals(element: Change) -> Bool {
+        return (beforeChange == element.beforeChange && afterChange == element.afterChange && type == element.type)
     }
     
     func description() -> String {

@@ -83,9 +83,8 @@ class Matrix {
         return (out, changeset.reverse())
     }
     
-    func merge(sequence: Int[], row: Int, let direction: Direction) -> (Int[], Changeset) {
+    func merge(sequence: Int[], row: Int, let direction: Direction, changeset oldChangeset: Changeset) -> (Int[], Changeset) {
         var out = sequence.copy()
-        var changeset = Changeset()
         
         for i in 0..(out.count - 1) {
             let index = (out.count - 1) - i
@@ -101,11 +100,22 @@ class Matrix {
                 }
 
                 var realIndex = Matrix.realIndex(index, direction: direction, row: row, size: size)
-                changeset.addChanges([Change(oldValue: realIndex, newValue: realIndex, changeType: .MergeTiles)])
+                
+                //Merge existing compact if any
+                let oldValue = Matrix.realIndex(index - 1, direction: direction, row: row, size: size)
+                let existingSource = oldChangeset.changes.filter({ ( element: Change) in
+                        return element.afterChange == oldValue
+                    })
+                if countElements(existingSource) == 1 {
+                    oldChangeset.addChanges([Change(oldValue: existingSource[0].beforeChange, newValue: realIndex, changeType: .MoveTile)])
+                    oldChangeset.removeChange(existingSource[0])
+                }
+                
+                oldChangeset.addChanges([Change(oldValue: realIndex, newValue: realIndex, changeType: .MergeTiles)])
             }
         }
         
-        return (out, changeset)
+        return (out, oldChangeset)
     }
     
     func update(index: Int, direction: Direction) -> Changeset {
@@ -114,9 +124,7 @@ class Matrix {
         var changeset: Changeset
         previousSequence.unshare()
         (sequence, changeset) = compact(sequence, row: index, direction: direction)
-        var updateChangeset: Changeset
-        (sequence, updateChangeset) = merge(sequence, row: index, direction: direction)
-        changeset.addChanges(updateChangeset.changes)
+        (sequence, changeset) = merge(sequence, row: index, direction: direction, changeset: changeset)
         
         for i in 0..sequence.count {
             tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)] = sequence[i]

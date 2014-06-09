@@ -24,6 +24,7 @@ class Changeset : NSObject {
     
     func insertChange(change: Change, atIndex idx: Int) -> Changeset {
         changes.insert(change, atIndex: idx)
+        println("inserting change \(change.description())")
         return self
     }
     
@@ -39,6 +40,7 @@ class Changeset : NSObject {
         
         if found != -1 {
             changes.removeAtIndex(found)
+            println("removing change \(change.description())")
         }
         
         return found

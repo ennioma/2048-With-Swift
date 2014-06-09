@@ -71,6 +71,17 @@ class Matrix {
                 let oldValue = Matrix.realIndex(current, direction: direction, row: row, size: size)
                 let newValue = Matrix.realIndex(minFreeSpace, direction: direction, row: row, size: size)
                 
+                //Check if a previous move to update is present
+                let existingMove = changeset.changes.filter({ (element: Change) in
+                    element.type == ChangeType.MoveTile && element.afterChange == oldValue
+                    })
+                if countElements(existingMove) > 0 {
+                    let oldMove = existingMove[0]
+                    let newMove = Change(oldValue: oldMove.beforeChange, newValue: newValue, changeType: .MoveTile)
+                    let oldIndex = changeset.removeChange(oldMove)
+                    changeset.insertChange(newMove, atIndex: oldIndex)
+                }
+                
                 //Check if oldValue is target of some existing merge
                 let existingMerge = changeset.changes.filter({ (element: Change) in
                         element.type == ChangeType.MergeTiles && element.afterChange == oldValue
@@ -80,17 +91,6 @@ class Matrix {
                     let newMerge = Change(oldValue: newValue, newValue: newValue, changeType: .MergeTiles)
                     let oldIndex = changeset.removeChange(oldMerge)
                     changeset.insertChange(newMerge, atIndex: oldIndex)
-                    
-                    //Also update previous target destination of the .MoveTile change
-                    let existingMove = changeset.changes.filter({ (element: Change) in
-                        element.type == ChangeType.MoveTile && element.afterChange == oldValue
-                    })
-                    if countElements(existingMove) > 0 {
-                        let oldMove = existingMove[0]
-                        let newMove = Change(oldValue: oldMove.beforeChange, newValue: newValue, changeType: .MoveTile)
-                        let oldIndex = changeset.removeChange(oldMove)
-                        changeset.insertChange(newMove, atIndex: oldIndex)
-                    }
                 }
                 
                 changeset.addChanges([ Change(oldValue: oldValue, newValue: newValue, changeType: .MoveTile) ])

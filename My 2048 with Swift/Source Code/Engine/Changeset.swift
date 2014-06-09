@@ -17,38 +17,18 @@ enum ChangeType: Int {
 class Changeset : NSObject {
     var changes: Change[]
     
-    func addChanges(changes: Change[]) {
+    func addChanges(changes: Change[]) -> Changeset {
         self.changes += changes
+        return self
+    }
+    
+    func reverse() -> Changeset {
+        changes = changes.reverse()
+        return self
     }
     
     init() {
         changes = Change[]()
-    }
-    
-    init(previousSequence: Int[], nextSequence: Int[], direction: Direction, row i: Int) {
-        changes = Change[]()
-        
-        //Generate changes in row and for each of them create a new Change instance with the oldPosition in the sequence and the new one.
-        //The board will do the calculations on the frames
-        var changedIndexes: Int[] = Int[]()
-        for idx in 0..countElements(previousSequence) {
-            if previousSequence[idx] != nextSequence[idx] {
-                let size = countElements(previousSequence)
-                var realIndex = Matrix.realIndex(idx, direction: direction, row: i, size: size)
-
-                changedIndexes += realIndex
-            }
-        }
-        
-        println("Changed indexes: " + changedIndexes.description)
-        
-        if countElements(changedIndexes) > 1 {
-            for var change = countElements(changedIndexes) - 2; change >= 0; --change {
-                changes += Change(oldValue: changedIndexes[change], newValue: changedIndexes[change + 1], changeType: .MoveTile)
-            }
-        }
-        
-        changes = changes.reverse()
     }
     
     init(newTile: Int) {

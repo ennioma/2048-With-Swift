@@ -53,49 +53,75 @@ class Matrix {
         }
     }
     
-    func compact(sequence: Int[]) -> Int[] {
-        var out = sequence.filter({
-            (current: Int) -> Bool in
-                current > 0
-            })
+    func compact(sequence: Int[], row: Int, let direction: Direction) -> (Int[], Changeset) {
+        var current = countElements(sequence) - 1
+        var changeset = Changeset()
+        var minFreeSpace = current
+        var out = sequence
+        out.unshare()
         
-        for i in 0..(size - out.count) {
-            out.insert(0, atIndex: 0)
-        }
+        do {
+            while current >= 0 && out[current] == 0 {
+                current--
+            }
+            
+            if current < 0 {
+                break
+            }
+            if minFreeSpace != current {
+                let oldValue = Matrix.realIndex(current, direction: direction, row: row, size: size)
+                let newValue = Matrix.realIndex(minFreeSpace, direction: direction, row: row, size: size)
+                changeset.addChanges([ Change(oldValue: oldValue, newValue: newValue, changeType: .MoveTile) ])
+                
+                let temp = out[current]
+                out[current] = 0
+                out[minFreeSpace] = temp
+            }
+            current = --minFreeSpace
+        } while current >= 0
         
-        return out
+        return (out, changeset.reverse())
     }
     
-    func merge(sequence: Int[], row: Int, let direction: Direction, var changeset: Changeset) -> Int[] {
+    func merge(sequence: Int[], row: Int, let direction: Direction) -> (Int[], Changeset) {
         var out = sequence.copy()
+        var changeset = Changeset()
         
         for i in 0..(out.count - 1) {
             let index = (out.count - 1) - i
             
             if out[index] != 0 && out[index] == out[index-1] {
                 out[index] *= 2
+                
+                if index - 2 > 0 {
+                    out[index-1] = out[index-2]
+                    out[index-2] = 0
+                } else {
+                    out[index-1] = 0
+                }
 
                 var realIndex = Matrix.realIndex(index, direction: direction, row: row, size: size)
-                changeset.addChanges([Change(oldValue: realIndex, newValue: realIndex, changeType: ChangeType.MergeTiles)])
-                out[index-1] = 0
+                changeset.addChanges([Change(oldValue: realIndex, newValue: realIndex, changeType: .MergeTiles)])
             }
         }
         
-        return out
+        return (out, changeset)
     }
     
     func update(index: Int, direction: Direction) -> Changeset {
         var sequence = self[index, direction]
         var previousSequence = sequence
-        var changeset = Changeset()
+        var changeset: Changeset
         previousSequence.unshare()
-        sequence = compact(merge(compact(sequence), row: index, direction: direction, changeset: changeset))
+        (sequence, changeset) = compact(sequence, row: index, direction: direction)
+        var updateChangeset: Changeset
+        (sequence, updateChangeset) = merge(sequence, row: index, direction: direction)
+        changeset.addChanges(updateChangeset.changes)
         
         for i in 0..sequence.count {
             tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)] = sequence[i]
         }
         
-        changeset.addChanges(Changeset(previousSequence: previousSequence, nextSequence: sequence, direction: direction, row: index).changes)
         return changeset
     }
     

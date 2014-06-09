@@ -53,7 +53,7 @@ class Matrix {
         }
     }
     
-    func compact(sequence: Int[], row: Int, let direction: Direction) -> (Int[], Changeset) {
+    func compact(sequence: Int[], row: Int, let direction: Direction, changeset oldChangeset: Changeset) -> (Int[], Changeset) {
         var current = countElements(sequence) - 1
         var changeset = Changeset()
         var minFreeSpace = current
@@ -80,7 +80,7 @@ class Matrix {
             current = --minFreeSpace
         } while current >= 0
         
-        return (out, changeset.reverse())
+        return (out, changeset)
     }
     
     func merge(sequence: Int[], row: Int, let direction: Direction, changeset oldChangeset: Changeset) -> (Int[], Changeset) {
@@ -121,10 +121,13 @@ class Matrix {
     func update(index: Int, direction: Direction) -> Changeset {
         var sequence = self[index, direction]
         var previousSequence = sequence
-        var changeset: Changeset
+        var changeset = Changeset()
         previousSequence.unshare()
-        (sequence, changeset) = compact(sequence, row: index, direction: direction)
+        (sequence, changeset) = compact(sequence, row: index, direction: direction, changeset: changeset)
         (sequence, changeset) = merge(sequence, row: index, direction: direction, changeset: changeset)
+//        var tempChangeset: Changeset
+//        (sequence, tempChangeset) = compact(sequence, row: index, direction: direction)
+//        changeset.addChanges(tempChangeset.changes)
         
         for i in 0..sequence.count {
             tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)] = sequence[i]

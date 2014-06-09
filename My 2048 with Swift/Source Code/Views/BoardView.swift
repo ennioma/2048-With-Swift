@@ -11,10 +11,13 @@ import UIKit
 class BoardView: BaseView {
     var boardSize: Int
     var tiles: Tile?[]
+    var originalTileFrames: CGRect[]
     
     init(coder aDecoder: NSCoder!) {
-        self.boardSize = 0
-        self.tiles = Tile[]()
+        boardSize = 0
+        tiles = Tile[]()
+        originalTileFrames = CGRect[]()
+        
         super.init(coder: aDecoder)
     }
     
@@ -27,6 +30,7 @@ class BoardView: BaseView {
                 
                 for idx in 0..boardSize*boardSize {
                     tiles.insert(nil, atIndex: idx)
+                    originalTileFrames.insert(CGRect.zeroRect, atIndex: idx)
                 }
                 
                 createBoard(boardSize)
@@ -54,6 +58,7 @@ class BoardView: BaseView {
                 var backgroundTile = UIView(frame:  tile.frame)
                 backgroundTile.backgroundColor = tile.backgroundColor
                 addSubview(backgroundTile)
+                originalTileFrames[a*size + b] = backgroundTile.frame
                 
                 addSubview(tile)
                 tiles[a*size + b] = tile
@@ -67,7 +72,6 @@ class BoardView: BaseView {
 
     func update(changeset: Changeset) {
         let e = matrix!
-        var originalFrames: CGRect[] = CGRect[]()
 
         println("changeset: \(changeset)")
         
@@ -78,17 +82,13 @@ class BoardView: BaseView {
                     case .MoveTile:
                         var tileToMove = self.tiles[change.beforeChange]!
                         tileToMove.layer.zPosition = 10
-                        var tileToResemble = self.tiles[change.afterChange]!
-                        originalFrames += tileToMove.frame
-                        tileToMove.center = tileToResemble.center
+                        var frameToResemble = self.originalTileFrames[change.afterChange]
+                        tileToMove.frame = frameToResemble
                     case .MergeTiles, .NewTile:
                         break
                 }
             }
         }, completion: { (_: Bool) in
-            //Restore frames
-            var restored = 0
-            
             for a in 0..self.boardSize {
                 for b in 0..self.boardSize {
                     let value = e.tiles[a*self.boardSize + b]
@@ -120,7 +120,7 @@ class BoardView: BaseView {
                     case .MoveTile:
                         //If move tile, move frame
                         var tileToMove = self.tiles[change.beforeChange]!
-                        tileToMove.frame = originalFrames[restored++]
+                        tileToMove.frame = self.originalTileFrames[change.beforeChange]
                         tileToMove.layer.zPosition = 2
                 }
             }

@@ -16,4 +16,8 @@ class ScoreView: BaseView {
         super.init(coder: aDecoder)
         self.layer.cornerRadius = 5
     }
+    
+    func setScore(score: Int) {
+        scoreLbl.text = String(score)
+    }
 }

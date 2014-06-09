@@ -17,7 +17,7 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupGesturesOnBoard()
+        setupGesturesOnBoard()
         
         startNewGame()
     }
@@ -32,15 +32,15 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
     
     // EngineProtocol methods
     func updateTiles(changeset: Changeset) {
-        self.boardView.update(changeset)
+        boardView.update(changeset)
     }
     
     func updateBestScore(score: Int) {
-        self.bestScoreView.scoreLbl.text = String(score)
+        bestScoreView.setScore(score)
     }
     
     func updateCurrentScore(score: Int) {
-        self.currentScoreView.scoreLbl.text = String(score)
+        currentScoreView.setScore(score)
     }
 
     // Main View Actions

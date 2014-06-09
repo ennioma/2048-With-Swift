@@ -77,13 +77,7 @@ class Matrix {
 
                 var realIndex = Matrix.realIndex(index, direction: direction, row: row, size: size)
                 changeset.addChanges([Change(oldValue: realIndex, newValue: realIndex, changeType: ChangeType.MergeTiles)])
-                
-                if index - 2 > 0 {
-                    out[index-1] = out[index-2]
-                    out[index-2] = 0
-                } else {
-                    out[index-1] = 0
-                }
+                out[index-1] = 0
             }
         }
         
@@ -95,7 +89,7 @@ class Matrix {
         var previousSequence = sequence
         var changeset = Changeset()
         previousSequence.unshare()
-        sequence = merge(compact(sequence), row: index, direction: direction, changeset: changeset)
+        sequence = compact(merge(compact(sequence), row: index, direction: direction, changeset: changeset))
         
         for i in 0..sequence.count {
             tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)] = sequence[i]

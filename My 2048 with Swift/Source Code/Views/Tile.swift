@@ -13,16 +13,18 @@ struct TileColor {
     static var colors: Dictionary<Int, UIColor> {
         return [
             0 : UIColor(red: 250/255, green: 245/255, blue: 237/255, alpha: 1.0),
-            2 : UIColor(red: 234/255, green: 222/255, blue: 209/255, alpha: 1.0),
-            4 : UIColor(red: 231/255, green: 218/255, blue: 187/255, alpha: 1.0),
-            8 : UIColor(red: 238/255, green: 160/255, blue: 96/255, alpha: 1.0),
-            16 : UIColor(red: 200/255, green: 110/255, blue: 57/255, alpha: 1.0),
-            32 : UIColor(red: 240/255, green: 103/255, blue: 76/255, alpha: 1.0),
-            64 : UIColor(red: 228/255, green: 65/255, blue: 35/255, alpha: 1.0),
-            128 : UIColor(red: 240/255, green: 210/255, blue: 80/255, alpha: 1.0),
-            256 : UIColor(red: 63/255, green: 180/255, blue: 100/255, alpha: 1.0),
-            512 : UIColor(red: 200/255, green: 170/255, blue: 15/255, alpha: 1.0),
-            1024 : UIColor(red: 200/255, green: 155/255, blue: 0/255, alpha: 1.0)
+            2 : UIColor(red: 236/255, green: 226/255, blue: 215/255, alpha: 1.0),
+            4 : UIColor(red: 235/255, green: 222/255, blue: 196/255, alpha: 1.0),
+            8 : UIColor(red: 239/255, green: 172/255, blue: 113/255, alpha: 1.0),
+            16 : UIColor(red: 242/255, green: 142/255, blue: 91/255, alpha: 1.0),
+            32 : UIColor(red: 243/255, green: 114/255, blue: 87/255, alpha: 1.0),
+            64 : UIColor(red: 242/255, green: 82/255, blue: 52/255, alpha: 1.0),
+            128 : UIColor(red: 235/255, green: 205/255, blue: 106/255, alpha: 1.0),
+            256 : UIColor(red: 235/255, green: 202/255, blue: 89/255, alpha: 1.0),
+            512 : UIColor(red: 235/255, green: 197/255, blue: 73/255, alpha: 1.0),
+            1024 : UIColor(red: 233/255, green: 194/255, blue: 56/255, alpha: 1.0),
+            2048 : UIColor(red: 239/255, green: 196/255, blue: 8/255, alpha: 1.0),
+            4096 : UIColor(red: 239/255, green: 196/255, blue: 56/255, alpha: 1.0)
         ]
     }
     
@@ -49,7 +51,7 @@ class Tile : UIView {
         super.init(frame: CGRectMake(position.x, position.y, tileSize, tileSize))
         backgroundColor = color()
         
-        tileLabel.font = UIFont(name: "Helvetica Neue", size: 40)
+        tileLabel.font = UIFont(name: "Helvetica Neue", size: 32)
         tileLabel.textColor = textColor()
         tileLabel.textAlignment = NSTextAlignment.Center
         addSubview(tileLabel)

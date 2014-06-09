@@ -22,7 +22,12 @@ class Changeset : NSObject {
         return self
     }
     
-    func removeChange(change: Change) -> Changeset {
+    func insertChange(change: Change, atIndex idx: Int) -> Changeset {
+        changes.insert(change, atIndex: idx)
+        return self
+    }
+    
+    func removeChange(change: Change) -> Int {
         var found = -1
         for idx in 0..countElements(changes) {
             let element = changes[idx]
@@ -36,7 +41,7 @@ class Changeset : NSObject {
             changes.removeAtIndex(found)
         }
         
-        return self
+        return found
     }
     
     func reverse() -> Changeset {

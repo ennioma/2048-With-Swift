@@ -53,9 +53,8 @@ class Matrix {
         }
     }
     
-    func compact(sequence: Int[], row: Int, let direction: Direction, changeset oldChangeset: Changeset) -> (Int[], Changeset) {
+    func compact(sequence: Int[], row: Int, let direction: Direction, changeset: Changeset) -> (Int[], Changeset) {
         var current = countElements(sequence) - 1
-        var changeset = Changeset()
         var minFreeSpace = current
         var out = sequence
         out.unshare()
@@ -71,6 +70,29 @@ class Matrix {
             if minFreeSpace != current {
                 let oldValue = Matrix.realIndex(current, direction: direction, row: row, size: size)
                 let newValue = Matrix.realIndex(minFreeSpace, direction: direction, row: row, size: size)
+                
+                //Check if oldValue is target of some existing merge
+                let existingMerge = changeset.changes.filter({ (element: Change) in
+                        element.type == ChangeType.MergeTiles && element.afterChange == oldValue
+                    })
+                if countElements(existingMerge) > 0 {
+                    let oldMerge = existingMerge[0]
+                    let newMerge = Change(oldValue: newValue, newValue: newValue, changeType: .MergeTiles)
+                    let oldIndex = changeset.removeChange(oldMerge)
+                    changeset.insertChange(newMerge, atIndex: oldIndex)
+                    
+                    //Also update previous target destination of the .MoveTile change
+                    let existingMove = changeset.changes.filter({ (element: Change) in
+                        element.type == ChangeType.MoveTile && element.afterChange == oldValue
+                    })
+                    if countElements(existingMove) > 0 {
+                        let oldMove = existingMove[0]
+                        let newMove = Change(oldValue: oldMove.beforeChange, newValue: newValue, changeType: .MoveTile)
+                        let oldIndex = changeset.removeChange(oldMove)
+                        changeset.insertChange(newMove, atIndex: oldIndex)
+                    }
+                }
+                
                 changeset.addChanges([ Change(oldValue: oldValue, newValue: newValue, changeType: .MoveTile) ])
                 
                 let temp = out[current]
@@ -91,14 +113,8 @@ class Matrix {
             
             if out[index] != 0 && out[index] == out[index-1] {
                 out[index] *= 2
+                out[index-1] = 0
                 
-                if index - 2 > 0 {
-                    out[index-1] = out[index-2]
-                    out[index-2] = 0
-                } else {
-                    out[index-1] = 0
-                }
-
                 var realIndex = Matrix.realIndex(index, direction: direction, row: row, size: size)
                 
                 //Merge existing compact if any
@@ -107,8 +123,8 @@ class Matrix {
                         return element.afterChange == oldValue
                     })
                 if countElements(existingSource) == 1 {
-                    oldChangeset.addChanges([Change(oldValue: existingSource[0].beforeChange, newValue: realIndex, changeType: .MoveTile)])
-                    oldChangeset.removeChange(existingSource[0])
+                    let oldIndex = oldChangeset.removeChange(existingSource[0])
+                    oldChangeset.insertChange(Change(oldValue: existingSource[0].beforeChange, newValue: realIndex, changeType: .MoveTile), atIndex: oldIndex)
                 }
                 
                 oldChangeset.addChanges([Change(oldValue: realIndex, newValue: realIndex, changeType: .MergeTiles)])
@@ -125,10 +141,8 @@ class Matrix {
         previousSequence.unshare()
         (sequence, changeset) = compact(sequence, row: index, direction: direction, changeset: changeset)
         (sequence, changeset) = merge(sequence, row: index, direction: direction, changeset: changeset)
-//        var tempChangeset: Changeset
-//        (sequence, tempChangeset) = compact(sequence, row: index, direction: direction)
-//        changeset.addChanges(tempChangeset.changes)
-        
+        (sequence, changeset) = compact(sequence, row: index, direction: direction, changeset: changeset)
+
         for i in 0..sequence.count {
             tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)] = sequence[i]
         }

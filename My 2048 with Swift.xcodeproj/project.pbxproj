@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		522F8FE81940E1F000769A8A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F8FE71940E1F000769A8A /* Tile.swift */; };
+		52DD68531944C26000F37A36 /* Changeset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD68521944C26000F37A36 /* Changeset.swift */; };
+		6DB1D7F61940A59D0066B4CE /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1D7F51940A59D0066B4CE /* ScoreView.swift */; };
+		6DB1D7F81940AADB0066B4CE /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1D7F71940AADB0066B4CE /* BoardView.swift */; };
+		6DB1D7FA1940AE150066B4CE /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1D7F91940AE150066B4CE /* BaseView.swift */; };
+		6DB1D7FC1940AEB60066B4CE /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1D7FB1940AEB60066B4CE /* BaseLabel.swift */; };
+		6DB1D7FE1940AEDA0066B4CE /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1D7FD1940AEDA0066B4CE /* BaseButton.swift */; };
+		6DB1D8011940B5050066B4CE /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB1D8001940B5050066B4CE /* GameEngine.swift */; };
+		6DCC3E6A1940A39500DF3EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC3E691940A39500DF3EE3 /* AppDelegate.swift */; };
+		6DCC3E6F1940A39500DF3EE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC3E6D1940A39500DF3EE3 /* Main.storyboard */; };
+		6DCC3E711940A39500DF3EE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC3E701940A39500DF3EE3 /* Images.xcassets */; };
+		6DCC3E7D1940A39500DF3EE3 /* My_2048_with_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC3E7C1940A39500DF3EE3 /* My_2048_with_SwiftTests.swift */; };
+		6DCC3E891940A3C200DF3EE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC3E871940A3C200DF3EE3 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DCC3E771940A39500DF3EE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DCC3E5C1940A39400DF3EE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DCC3E631940A39400DF3EE3;
+			remoteInfo = "My 2048 with Swift";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		522F8FE71940E1F000769A8A /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		52DD68521944C26000F37A36 /* Changeset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Changeset.swift; sourceTree = "<group>"; };
+		6DB1D7F51940A59D0066B4CE /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		6DB1D7F71940AADB0066B4CE /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		6DB1D7F91940AE150066B4CE /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		6DB1D7FB1940AEB60066B4CE /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		6DB1D7FD1940AEDA0066B4CE /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		6DB1D8001940B5050066B4CE /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		6DCC3E641940A39400DF3EE3 /* My 2048 with Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My 2048 with Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DCC3E681940A39500DF3EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DCC3E691940A39500DF3EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6DCC3E6E1940A39500DF3EE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6DCC3E701940A39500DF3EE3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6DCC3E761940A39500DF3EE3 /* My 2048 with SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My 2048 with SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DCC3E7B1940A39500DF3EE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DCC3E7C1940A39500DF3EE3 /* My_2048_with_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_2048_with_SwiftTests.swift; sourceTree = "<group>"; };
+		6DCC3E871940A3C200DF3EE3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DCC3E611940A39400DF3EE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCC3E731940A39500DF3EE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DB1D7FF1940B4870066B4CE /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				6DB1D8001940B5050066B4CE /* GameEngine.swift */,
+				52DD68521944C26000F37A36 /* Changeset.swift */,
+			);
+			name = Engine;
+			path = "Source Code/Engine";
+			sourceTree = "<group>";
+		};
+		6DCC3E5B1940A39400DF3EE3 = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E661940A39400DF3EE3 /* My 2048 with Swift */,
+				6DCC3E791940A39500DF3EE3 /* My 2048 with SwiftTests */,
+				6DCC3E651940A39400DF3EE3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DCC3E651940A39400DF3EE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E641940A39400DF3EE3 /* My 2048 with Swift.app */,
+				6DCC3E761940A39500DF3EE3 /* My 2048 with SwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DCC3E661940A39400DF3EE3 /* My 2048 with Swift */ = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E691940A39500DF3EE3 /* AppDelegate.swift */,
+				6DCC3E861940A3C200DF3EE3 /* Controllers */,
+				6DB1D7FF1940B4870066B4CE /* Engine */,
+				6DCC3E701940A39500DF3EE3 /* Images.xcassets */,
+				6DCC3E6D1940A39500DF3EE3 /* Main.storyboard */,
+				6DCC3E671940A39500DF3EE3 /* Supporting Files */,
+				6DCC3E881940A3C200DF3EE3 /* Views */,
+			);
+			path = "My 2048 with Swift";
+			sourceTree = "<group>";
+		};
+		6DCC3E671940A39500DF3EE3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E681940A39500DF3EE3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DCC3E791940A39500DF3EE3 /* My 2048 with SwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E7C1940A39500DF3EE3 /* My_2048_with_SwiftTests.swift */,
+				6DCC3E7A1940A39500DF3EE3 /* Supporting Files */,
+			);
+			path = "My 2048 with SwiftTests";
+			sourceTree = "<group>";
+		};
+		6DCC3E7A1940A39500DF3EE3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E7B1940A39500DF3EE3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DCC3E861940A3C200DF3EE3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6DCC3E871940A3C200DF3EE3 /* ViewController.swift */,
+			);
+			name = Controllers;
+			path = "Source Code/Controllers";
+			sourceTree = "<group>";
+		};
+		6DCC3E881940A3C200DF3EE3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6DB1D7FD1940AEDA0066B4CE /* BaseButton.swift */,
+				6DB1D7FB1940AEB60066B4CE /* BaseLabel.swift */,
+				6DB1D7F91940AE150066B4CE /* BaseView.swift */,
+				6DB1D7F71940AADB0066B4CE /* BoardView.swift */,
+				6DB1D7F51940A59D0066B4CE /* ScoreView.swift */,
+				522F8FE71940E1F000769A8A /* Tile.swift */,
+			);
+			name = Views;
+			path = "Source Code/Views";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DCC3E631940A39400DF3EE3 /* My 2048 with Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DCC3E801940A39500DF3EE3 /* Build configuration list for PBXNativeTarget "My 2048 with Swift" */;
+			buildPhases = (
+				6DCC3E601940A39400DF3EE3 /* Sources */,
+				6DCC3E611940A39400DF3EE3 /* Frameworks */,
+				6DCC3E621940A39400DF3EE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "My 2048 with Swift";
+			productName = "My 2048 with Swift";
+			productReference = 6DCC3E641940A39400DF3EE3 /* My 2048 with Swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6DCC3E751940A39500DF3EE3 /* My 2048 with SwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DCC3E831940A39500DF3EE3 /* Build configuration list for PBXNativeTarget "My 2048 with SwiftTests" */;
+			buildPhases = (
+				6DCC3E721940A39500DF3EE3 /* Sources */,
+				6DCC3E731940A39500DF3EE3 /* Frameworks */,
+				6DCC3E741940A39500DF3EE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DCC3E781940A39500DF3EE3 /* PBXTargetDependency */,
+			);
+			name = "My 2048 with SwiftTests";
+			productName = "My 2048 with SwiftTests";
+			productReference = 6DCC3E761940A39500DF3EE3 /* My 2048 with SwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DCC3E5C1940A39400DF3EE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = enniomasi;
+				TargetAttributes = {
+					6DCC3E631940A39400DF3EE3 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					6DCC3E751940A39500DF3EE3 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 6DCC3E631940A39400DF3EE3;
+					};
+				};
+			};
+			buildConfigurationList = 6DCC3E5F1940A39400DF3EE3 /* Build configuration list for PBXProject "My 2048 with Swift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6DCC3E5B1940A39400DF3EE3;
+			productRefGroup = 6DCC3E651940A39400DF3EE3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DCC3E631940A39400DF3EE3 /* My 2048 with Swift */,
+				6DCC3E751940A39500DF3EE3 /* My 2048 with SwiftTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DCC3E621940A39400DF3EE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCC3E6F1940A39500DF3EE3 /* Main.storyboard in Resources */,
+				6DCC3E711940A39500DF3EE3 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCC3E741940A39500DF3EE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DCC3E601940A39400DF3EE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCC3E891940A3C200DF3EE3 /* ViewController.swift in Sources */,
+				6DB1D7FC1940AEB60066B4CE /* BaseLabel.swift in Sources */,
+				52DD68531944C26000F37A36 /* Changeset.swift in Sources */,
+				6DB1D7F81940AADB0066B4CE /* BoardView.swift in Sources */,
+				6DB1D8011940B5050066B4CE /* GameEngine.swift in Sources */,
+				6DB1D7FE1940AEDA0066B4CE /* BaseButton.swift in Sources */,
+				6DB1D7FA1940AE150066B4CE /* BaseView.swift in Sources */,
+				522F8FE81940E1F000769A8A /* Tile.swift in Sources */,
+				6DCC3E6A1940A39500DF3EE3 /* AppDelegate.swift in Sources */,
+				6DB1D7F61940A59D0066B4CE /* ScoreView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCC3E721940A39500DF3EE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCC3E7D1940A39500DF3EE3 /* My_2048_with_SwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DCC3E781940A39500DF3EE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DCC3E631940A39400DF3EE3 /* My 2048 with Swift */;
+			targetProxy = 6DCC3E771940A39500DF3EE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6DCC3E6D1940A39500DF3EE3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DCC3E6E1940A39500DF3EE3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DCC3E7E1940A39500DF3EE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6DCC3E7F1940A39500DF3EE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DCC3E811940A39500DF3EE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "My 2048 with Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6DCC3E821940A39500DF3EE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "My 2048 with Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6DCC3E841940A39500DF3EE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/My 2048 with Swift.app/My 2048 with Swift";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "My 2048 with SwiftTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		6DCC3E851940A39500DF3EE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/My 2048 with Swift.app/My 2048 with Swift";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "My 2048 with SwiftTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DCC3E5F1940A39400DF3EE3 /* Build configuration list for PBXProject "My 2048 with Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCC3E7E1940A39500DF3EE3 /* Debug */,
+				6DCC3E7F1940A39500DF3EE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DCC3E801940A39500DF3EE3 /* Build configuration list for PBXNativeTarget "My 2048 with Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCC3E811940A39500DF3EE3 /* Debug */,
+				6DCC3E821940A39500DF3EE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DCC3E831940A39500DF3EE3 /* Build configuration list for PBXNativeTarget "My 2048 with SwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCC3E841940A39500DF3EE3 /* Debug */,
+				6DCC3E851940A39500DF3EE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DCC3E5C1940A39400DF3EE3 /* Project object */;
+}

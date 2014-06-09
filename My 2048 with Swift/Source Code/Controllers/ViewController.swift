@@ -110,7 +110,11 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
     }
     
     func gameOver() {
-        let alert = UIAlertView(title: "Game over", message: "Your score is (something). Try again!", delegate: self, cancelButtonTitle: "Ok")
+        var alert = UIAlertView()
+        alert.title = "Game over"
+        alert.message = "Your score is \(currentScoreView.scoreLbl.text). Try again!"
+        alert.delegate = self
+        alert.addButtonWithTitle("Ok")
         alert.show()
     }
     

@@ -78,6 +78,7 @@ class GameEngine: NSObject {
             bestScore = currentScore
             
             persistBestScore()
+            delegate.updateBestScore(bestScore)
         }
         
         delegate.updateCurrentScore(currentScore)

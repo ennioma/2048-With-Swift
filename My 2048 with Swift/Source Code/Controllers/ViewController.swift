@@ -36,7 +36,7 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
     }
     
     func updateBestScore(score: Int) {
-        bestScoreView.setScore(score)
+        bestScoreView.setScoreWithAnimation(score)
     }
     
     func updateCurrentScore(score: Int) {

@@ -20,4 +20,18 @@ class ScoreView: BaseView {
     func setScore(score: Int) {
         scoreLbl.text = String(score)
     }
+    
+    func setScoreWithAnimation(score: Int) {
+        setScore(score)
+        
+        UIView.animateKeyframesWithDuration(0.4, delay: 0, options: UIViewKeyframeAnimationOptions.CalculationModeCubicPaced, animations: {
+            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.2, animations: {
+                self.scoreLbl.transform = CGAffineTransformMakeScale(1.4, 1.4);
+                })
+            
+            UIView.addKeyframeWithRelativeStartTime(0.2, relativeDuration: 0.2, animations: {
+                self.scoreLbl.transform = CGAffineTransformIdentity;
+                })
+            }, completion: nil)
+    }
 }

@@ -15,9 +15,9 @@ enum ChangeType: Int {
 }
 
 class Changeset : NSObject {
-    var changes: Change[]
+    var changes: [Change]
     
-    func addChanges(changes: Change[]) -> Changeset {
+    func addChanges(changes: [Change]) -> Changeset {
         self.changes += changes
         return self
     }
@@ -30,7 +30,7 @@ class Changeset : NSObject {
     
     func removeChange(change: Change) -> Int {
         var found = -1
-        for idx in 0..countElements(changes) {
+        for idx in 0..<countElements(changes) {
             let element = changes[idx]
             if change.equals(element) {
                 found = idx
@@ -46,8 +46,8 @@ class Changeset : NSObject {
         return found
     }
     
-    init() {
-        changes = Change[]()
+    override init() {
+        changes = [Change]()
     }
     
     init(newTile: Int) {
@@ -57,7 +57,7 @@ class Changeset : NSObject {
     
     func description() -> String {
         var building = "Changes:\n"
-        for i in 0..countElements(changes) {
+        for i in 0..<countElements(changes) {
             building += changes[i].description() + "\n"
         }
         
@@ -81,6 +81,6 @@ class Change {
     }
     
     func description() -> String {
-        return "{ Old value: \(beforeChange), new value: \(afterChange), type: \(type.toRaw()) }"
+        return "{ Old value: \(beforeChange), new value: \(afterChange), type: \(type.rawValue) }"
     }
 }

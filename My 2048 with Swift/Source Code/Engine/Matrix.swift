@@ -10,17 +10,17 @@ import Foundation
 
 class Matrix {
     let size: Int
-    var tiles: Int[]
+    var tiles: [Int]
     
     init(size: Int) {
         self.size = size
-        tiles = Int[](count:size*size, repeatedValue:0)
+        tiles = [Int](count:size*size, repeatedValue:0)
     }
     
-    subscript(index: Int, direction: Direction) -> Int[] {
-        var sequence = Int[](count: size, repeatedValue:0)
+    subscript(index: Int, direction: Direction) -> [Int] {
+        var sequence = [Int](count: size, repeatedValue:0)
         
-        for i in 0..size {
+        for i in 0..<size {
             sequence[i] = tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)]
         }
         
@@ -40,11 +40,10 @@ class Matrix {
         }
     }
     
-    func compact(sequence: Int[], row: Int, let direction: Direction, changeset: Changeset) -> (Int[], Changeset) {
+    func compact(sequence: [Int], row: Int, let direction: Direction, changeset: Changeset) -> ([Int], Changeset) {
         var current = countElements(sequence) - 1
         var minFreeSpace = current
         var out = sequence
-        out.unshare()
         
         do {
             while current >= 0 && out[current] == 0 {
@@ -92,10 +91,10 @@ class Matrix {
         return (out, changeset)
     }
     
-    func merge(sequence: Int[], row: Int, let direction: Direction, changeset oldChangeset: Changeset) -> (Int[], Changeset) {
-        var out = sequence.copy()
+    func merge(sequence: [Int], row: Int, let direction: Direction, changeset oldChangeset: Changeset) -> ([Int], Changeset) {
+        var out = sequence
         
-        for i in 0..(out.count - 1) {
+        for i in 0..<(out.count - 1) {
             let index = (out.count - 1) - i
             
             if out[index] != 0 && out[index] == out[index-1] {
@@ -125,12 +124,12 @@ class Matrix {
         var sequence = self[index, direction]
         var previousSequence = sequence
         var changeset = Changeset()
-        previousSequence.unshare()
+        
         (sequence, changeset) = compact(sequence, row: index, direction: direction, changeset: changeset)
         (sequence, changeset) = merge(sequence, row: index, direction: direction, changeset: changeset)
         (sequence, changeset) = compact(sequence, row: index, direction: direction, changeset: changeset)
         
-        for i in 0..sequence.count {
+        for i in 0..<sequence.count {
             tiles[Matrix.realIndex(i, direction: direction, row: index, size: size)] = sequence[i]
         }
         
@@ -156,7 +155,7 @@ class Matrix {
         
         tiles[tileIndex] = value
         
-        for row in 0..size {
+        for row in 0..<size {
             println(self[row, .Right])
         }
         

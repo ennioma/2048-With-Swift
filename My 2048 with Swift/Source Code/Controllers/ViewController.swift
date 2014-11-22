@@ -9,9 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
-    @IBOutlet var bestScoreView : ScoreView
-    @IBOutlet var currentScoreView : ScoreView
-    @IBOutlet var boardView : BoardView
+    @IBOutlet var bestScoreView : ScoreView!
+    @IBOutlet var currentScoreView : ScoreView!
+    @IBOutlet var boardView : BoardView!
     var engine: GameEngine?
 
     override func viewDidLoad() {
@@ -100,7 +100,7 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
     func gameOver() {
         var alert = UIAlertView()
         alert.title = "Game over"
-        alert.message = "Your score is \(currentScoreView.scoreLbl.text). Try again!"
+        alert.message = "Your score is \(currentScoreView.scoreLbl.text!). Try again!"
         alert.delegate = self
         alert.addButtonWithTitle("Ok")
         alert.show()

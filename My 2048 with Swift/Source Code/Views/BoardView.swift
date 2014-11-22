@@ -10,13 +10,13 @@ import UIKit
 
 class BoardView: BaseView {
     var boardSize: Int
-    var tiles: Tile?[]
-    var originalTileFrames: CGRect[]
+    var tiles: [Tile?]
+    var originalTileFrames: [CGRect]
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         boardSize = 0
-        tiles = Tile[]()
-        originalTileFrames = CGRect[]()
+        tiles = [Tile]()
+        originalTileFrames = [CGRect]()
         
         super.init(coder: aDecoder)
     }
@@ -25,10 +25,10 @@ class BoardView: BaseView {
         didSet {
             if let notNilMatrix = matrix {
                 boardSize = notNilMatrix.size
-                tiles = Tile[]()
-                originalTileFrames = CGRect[]()
+                tiles = [Tile]()
+                originalTileFrames = [CGRect]()
                 
-                for idx in 0..boardSize*boardSize {
+                for idx in 0..<boardSize*boardSize {
                     tiles.insert(nil, atIndex: idx)
                     originalTileFrames.insert(CGRect.zeroRect, atIndex: idx)
                 }
@@ -41,7 +41,7 @@ class BoardView: BaseView {
     func createBoard(size: Int) {
         let padding: Float = 8
         var y = padding
-        let availableSpace: Float = self.frame.width - (Float)(size + 1)*padding
+        let availableSpace: Float = (Float)(self.frame.width) - (Float)(size + 1)*padding
         let tileSize: Float = availableSpace / (Float)(size)
         
         for subview: AnyObject in self.subviews {
@@ -49,10 +49,11 @@ class BoardView: BaseView {
             castedSubview.removeFromSuperview()
         }
         
-        for a in 0..size {
+        for a in 0..<size {
             var x = padding
-            for b in 0..size {
-                var tile = Tile(position: CGPoint(x: x, y: y), insideValue: 0, size: tileSize)
+            for b in 0..<size {
+                let position = CGPoint(x: (CGFloat)(x), y: (CGFloat)(y))
+                var tile = Tile(position: position, insideValue: 0, size: tileSize)
                 tile.layer.zPosition = 2
                 
                 var backgroundTile = UIView(frame:  tile.frame)
@@ -71,8 +72,8 @@ class BoardView: BaseView {
     }
     
     func updateTiles() {
-        for a in 0..boardSize {
-            for b in 0..boardSize {
+        for a in 0..<boardSize {
+            for b in 0..<boardSize {
                 let value = matrix!.tiles[a*boardSize + b]
                 var tile = tiles[a*boardSize + b]
                 tile!.tileValue = value

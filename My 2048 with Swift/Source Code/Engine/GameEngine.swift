@@ -46,7 +46,7 @@ class GameEngine: NSObject {
     
     func manageCommand(direction: Direction) -> Bool {
         var changeset = Changeset()
-        for i in 0..matrixSize {
+        for i in 0..<matrixSize {
             let updateChangeset = matrix.update(i, direction: direction)
             changeset.addChanges(updateChangeset.changes)
         }
@@ -86,14 +86,15 @@ class GameEngine: NSObject {
     
     func readBestScore() {
         var defaults = NSUserDefaults(suiteName: "2048")
-        bestScore = defaults .integerForKey("2048bestScore")
+        let tempBestScore: Int? = defaults?.objectForKey("2048bestScore") as? Int
         
+        bestScore = tempBestScore ?? 0
         delegate.updateBestScore(bestScore)
     }
     
     func persistBestScore() {
         var defaults = NSUserDefaults(suiteName: "2048")
-        defaults.setInteger(bestScore, forKey: "2048bestScore")
-        defaults.synchronize()
+        defaults?.setObject(bestScore, forKey: "2048bestScore")
+        defaults?.synchronize()
     }
 }

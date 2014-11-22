@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseLabel: UILabel {
-    init(coder aDecoder: NSCoder!)  {
+    required init(coder aDecoder: NSCoder)  {
         super.init(coder: aDecoder)
         
         self.layer.cornerRadius = 6

@@ -9,10 +9,10 @@
 import UIKit
 
 class ScoreView: BaseView {
-    @IBOutlet var scoreLbl : UILabel
-    @IBOutlet var titleLbl : UILabel
+    @IBOutlet var scoreLbl : UILabel!
+    @IBOutlet var titleLbl : UILabel!
  
-    init(coder aDecoder: NSCoder!)  {
+    required init(coder aDecoder: NSCoder)  {
         super.init(coder: aDecoder)
         self.layer.cornerRadius = 5
     }

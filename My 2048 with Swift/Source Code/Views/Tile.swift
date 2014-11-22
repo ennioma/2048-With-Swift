@@ -46,15 +46,23 @@ class Tile : UIView {
     
     init(position: CGPoint, insideValue: Int, size: Float) {
         tileSize = size
-        tileLabel = UILabel(frame: CGRectMake(0, 0, tileSize, tileSize))
+        tileLabel = UILabel(frame: CGRectMake(0, 0, (CGFloat)(tileSize), (CGFloat)(tileSize)))
         tileValue = insideValue
-        super.init(frame: CGRectMake(position.x, position.y, tileSize, tileSize))
+        super.init(frame: CGRectMake(position.x, position.y, (CGFloat)(tileSize), (CGFloat)(tileSize)))
         backgroundColor = color()
         
         tileLabel.font = UIFont(name: "Helvetica Neue", size: 32)
         tileLabel.textColor = textColor()
         tileLabel.textAlignment = NSTextAlignment.Center
         addSubview(tileLabel)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        self.tileLabel = UILabel()
+        self.tileSize = 10
+        self.tileValue = 0
+        
+        super.init(coder: aDecoder)
     }
     
     func color() -> UIColor {

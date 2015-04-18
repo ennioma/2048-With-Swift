@@ -106,7 +106,7 @@ class ViewController: UIViewController, EngineProtocol, UIAlertViewDelegate {
         alert.show()
     }
     
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         //Restart
         startNewGame()
     }

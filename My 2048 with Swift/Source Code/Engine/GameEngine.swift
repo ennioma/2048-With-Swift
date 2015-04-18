@@ -51,7 +51,7 @@ class GameEngine: NSObject {
             changeset.addChanges(updateChangeset.changes)
         }
         
-        if countElements(changeset.changes) == 0 {
+        if count(changeset.changes) == 0 {
             return !matrix.noSpaceLeft()
         }
         

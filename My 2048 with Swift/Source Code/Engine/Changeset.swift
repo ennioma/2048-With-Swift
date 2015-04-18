@@ -30,7 +30,7 @@ class Changeset : NSObject {
     
     func removeChange(change: Change) -> Int {
         var found = -1
-        for idx in 0..<countElements(changes) {
+        for idx in 0..<count(changes) {
             let element = changes[idx]
             if change.equals(element) {
                 found = idx
@@ -54,10 +54,12 @@ class Changeset : NSObject {
         let change = Change(oldValue: -1, newValue: newTile, changeType: ChangeType.NewTile)
         changes = [change]
     }
-    
-    func description() -> String {
+}
+
+extension Changeset: Printable {
+    override var description: String {
         var building = "Changes:\n"
-        for i in 0..<countElements(changes) {
+        for i in 0..<count(changes) {
             building += changes[i].description() + "\n"
         }
         

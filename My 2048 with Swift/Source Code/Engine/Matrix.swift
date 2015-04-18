@@ -41,7 +41,7 @@ class Matrix {
     }
     
     func compact(sequence: [Int], row: Int, let direction: Direction, changeset: Changeset) -> ([Int], Changeset) {
-        var current = countElements(sequence) - 1
+        var current = count(sequence) - 1
         var minFreeSpace = current
         var out = sequence
         
@@ -61,7 +61,7 @@ class Matrix {
                 let existingMove = changeset.changes.filter({ (element: Change) in
                     element.type == ChangeType.MoveTile && element.afterChange == oldValue
                     })
-                if countElements(existingMove) > 0 {
+                if count(existingMove) > 0 {
                     let oldMove = existingMove[0]
                     let newMove = Change(oldValue: oldMove.beforeChange, newValue: newValue, changeType: .MoveTile)
                     let oldIndex = changeset.removeChange(oldMove)
@@ -72,7 +72,7 @@ class Matrix {
                 let existingMerge = changeset.changes.filter({ (element: Change) in
                     element.type == ChangeType.MergeTiles && element.afterChange == oldValue
                     })
-                if countElements(existingMerge) > 0 {
+                if count(existingMerge) > 0 {
                     let oldMerge = existingMerge[0]
                     let newMerge = Change(oldValue: newValue, newValue: newValue, changeType: .MergeTiles)
                     let oldIndex = changeset.removeChange(oldMerge)
@@ -108,7 +108,7 @@ class Matrix {
                 let existingSource = oldChangeset.changes.filter({ ( element: Change) in
                     return element.afterChange == oldValue
                     })
-                if countElements(existingSource) == 1 {
+                if count(existingSource) == 1 {
                     let oldIndex = oldChangeset.removeChange(existingSource[0])
                     oldChangeset.insertChange(Change(oldValue: existingSource[0].beforeChange, newValue: realIndex, changeType: .MoveTile), atIndex: oldIndex)
                 }
@@ -137,7 +137,7 @@ class Matrix {
     }
     
     func noSpaceLeft() -> Bool {
-        return countElements(tiles.filter({ (element: Int) in
+        return count(tiles.filter({ (element: Int) in
             element == 0
         })) == 0
     }

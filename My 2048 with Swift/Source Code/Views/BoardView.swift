@@ -9,15 +9,11 @@
 import UIKit
 
 class BoardView: BaseView {
-    var boardSize: Int
-    var tiles: [Tile?]
-    var originalTileFrames: [CGRect]
+    var boardSize: Int = 0
+    var tiles: [Tile?] = []
+    var originalTileFrames: [CGRect] = []
     
     required init(coder aDecoder: NSCoder) {
-        boardSize = 0
-        tiles = [Tile]()
-        originalTileFrames = [CGRect]()
-        
         super.init(coder: aDecoder)
     }
     
@@ -25,8 +21,8 @@ class BoardView: BaseView {
         didSet {
             if let notNilMatrix = matrix {
                 boardSize = notNilMatrix.size
-                tiles = [Tile]()
-                originalTileFrames = [CGRect]()
+                tiles = []
+                originalTileFrames = []
                 
                 for idx in 0..<boardSize*boardSize {
                     tiles.insert(nil, atIndex: idx)
@@ -44,9 +40,8 @@ class BoardView: BaseView {
         let availableSpace: Float = (Float)(self.frame.width) - (Float)(size + 1)*padding
         let tileSize: Float = availableSpace / (Float)(size)
         
-        for subview: AnyObject in self.subviews {
-            let castedSubview: UIView = subview as UIView
-            castedSubview.removeFromSuperview()
+        for subview in subviews as! [UIView] {
+            subview.removeFromSuperview()
         }
         
         for a in 0..<size {
